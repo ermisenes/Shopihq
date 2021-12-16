@@ -17,23 +17,22 @@ namespace Business.Concrete
             _orderDal = orderDal;
         }
 
-        public void Add(Order order)
+        public string Add(Order order)
         {
+            var result = _orderDal.Get(x => x.Id == order.Id);
             if (order.BrandId == 0)
             {
-                throw new InvalidOperationException("Brand Id 0 kaydedilemez");
+                return "Brand ID 0 olduğu için kaydedilemedi";
             }
-            _orderDal.Add(order);
-        }
-
-        public void Delete(Order order)
-        {
-            throw new NotImplementedException();
-        }
-
-        public OrderFilterModel GetByFilter(OrderFilterModel orderFilterModel)
-        {
-            return null;
+            else if (result.Count!=0)
+            {
+                return order.Id + " id'li kayıt bulunmaktadır";
+            }
+            else
+            {
+                _orderDal.Add(order);
+                return "Kayıt Başarılı";
+            }
         }
 
         public List<OrderListViewModel> GetAll()
@@ -55,12 +54,8 @@ namespace Business.Concrete
             }
             return orderVMs;
         }
-        //public Order GetById(int id)
-        //{
-        //    return _orderDal.Get(b => b.Id == id);
-        //}
 
-        public OrderFilterModel GetById(OrderFilterModel order)
+        public OrderFilterModel GetByFilters(OrderFilterModel order)
         {
             OrderFilterModel orderFilterModel = new OrderFilterModel();
 
@@ -73,16 +68,8 @@ namespace Business.Concrete
             .Take(order.PageSize)
             .OrderBy(p => p.GetType().GetProperty(order.SortBy).GetValue(p)).ToList();
 
-            var resultx = order;
-          
             return order;
         }
 
-
-
-        public void Update(Order order)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

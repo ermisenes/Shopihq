@@ -27,34 +27,15 @@ namespace WebApi.Controllers
         }
 
         [HttpPost("add")]
-        public void Add(Order order)
+        public IActionResult Add(Order order)
         {
-            _orderService.Add(order);
+            return Ok(_orderService.Add(order));
         }
 
-        [HttpPut("update")]
-        public void Update(Order order)
+        [HttpPost("get")]
+        public IActionResult GetByFilters([FromBody] OrderFilterModel orderFilterModel)
         {
-            _orderService.Update(order);
+            return Ok(_orderService.GetByFilters(orderFilterModel));
         }
-
-        //[HttpGet("get/byid")]
-        //public IActionResult GetById(int id)
-        //{
-        //    return Ok(_orderService.GetById(id));
-        //}
-
-        [HttpPost("get/byid")]
-
-        public IActionResult GetById([FromBody] OrderFilterModel orderFilterModel)
-        {
-            return Ok(_orderService.GetById(orderFilterModel));
-        }
-
-       // [HttpPost("filters")]
-       //public void GetByFilter([FromBody] OrderFilterModel orderFilterModel)
-       // {
-       //     return null;
-       // }
     }
 }

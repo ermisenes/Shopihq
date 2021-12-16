@@ -25,7 +25,6 @@ namespace Business.ViewModels
         //"Id", "BrandId", "Price", "StoreName", "CustomerName", "CreatedOn", "Status" değerlerini alabilir
         public string SortBy { get; set; }
 
-
         public List<Order> orders{ get; set; }
     }
 }
