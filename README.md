@@ -6,8 +6,9 @@ Swagger Adress : https://localhost:44379/swagger/index.html
 /api/Orders/get/all : Get all orders  
 --------------------------------------------------
 /api/Orders/add  : Add order 
-Example Usage ;
 ```json
+Example Usage ;
+
 {
   "id": 8080,
   "brandId": 1996,
@@ -17,7 +18,7 @@ Example Usage ;
   "createdOn": "2021-04-21T04:37:07Z",
   "status": 10
 }
---------------------------------------------------
+
 /api/Orders/get : filtered with data
 Example Usage ;
 {
@@ -31,4 +32,4 @@ Example Usage ;
   ],
   "sortBy": "BrandId"
 }
---------------------------------------------------
+
