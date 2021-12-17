@@ -1,10 +1,13 @@
+25 products are automatically installed when the application is launched.
+
 Swagger Adress : https://localhost:44379/swagger/index.html
 
 --------------------------------------------------
-/api/Orders/get/all : Get all orders
+/api/Orders/get/all : Get all orders  
 --------------------------------------------------
 /api/Orders/add  : Add order 
 Example Usage ;
+```json
 {
   "id": 8080,
   "brandId": 1996,
